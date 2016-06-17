@@ -6,6 +6,7 @@ RUN echo -e "[chef-stable]\nname=chef-stable\nbaseurl=https://packages.chef.io/s
 RUN cat chef-stable.repo
 RUN mv chef-stable.repo /etc/yum.repos.d/
 RUN curl -fsSL https://get.docker.com/ | sh
+RUN yum makecache fast
 RUN yum groupinstall -y "Development Tools" 
 RUN yum install -y chefdk-0.13.21-1.el7 \
 && /opt/chefdk/bin/chef gem install --no-ri --no-rdoc kitchen-docker -v 2.4.0 \
